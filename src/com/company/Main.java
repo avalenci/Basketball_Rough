@@ -1,6 +1,6 @@
 package com.company;
 
-import java.io.IOException;
+import java.io.*;
 public class Main
 {
 
@@ -10,6 +10,10 @@ public class Main
         for(int i = 1101; i < 1465; i++)
         {
             teams[i - 1101] = new Team(i);
+        }
+        for(int i = 0; i < teams.length; i++)
+        {
+            System.out.println(teams[i].name);
         }
     }
 }

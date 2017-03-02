@@ -1,39 +1,44 @@
 package com.company;
 
-import java.util.Scanner;
 import java.io.*;
+import java.util.*;
 public class Team
 {
     public Team(int teamNum) throws IOException
     {
-        String teamName = Integer.toString(teamNum);
+        ID = Integer.toString(teamNum);
         Scanner sc = new Scanner(new File("Teams.csv"));
         sc.useDelimiter(",|\n");
-        while (sc.hasNext()) {
-            if (sc.next().equals(teamName)) {
-                NAME = sc.next();
-                System.out.println(NAME);
+        while(sc.hasNext())
+        {
+            if(sc.next().equals(ID))
+            {
+                name = sc.next();
+                break;
             }
         }
+        getSeason_wins();
     }
 
-    public double offensiveScore()
+    public String getSeason_wins() throws IOException
     {
-        return 0;
+        Scanner sc = new Scanner(new File("RegularSeasonDetailedResultsE.csv"));
+        sc.nextLine();
+        ArrayList line = new ArrayList();
+        for (int j = 2015;)
+        int countwins = 0;
+        for (int i = 0; i < 13; i++)
+        {
+            line.add(i, sc.next());
+        }
+        if (line.get(1) == ID)
+        {
+            countwins++;
+        }
+        return "";
     }
 
-    public double defensiveScore()
-    {
-        return 0;
-    }
-    public String NAME;
-    public  double SEASON_WINS; //avg
-    public  double POST_SEASON_WINS; //avg
-    public  double POINTS_PER_GAME;
-    public  double THREE_POINT_PERCENT;
-    public  double FIELD_GOAL_PERCENT;
-    public  double FREE_THROW_PERCENT;
-    public  double TURN_OVER_AVERAGE; //avg turnovers per game
-    public  double STEALS_AVERAGE; //avg steals per game
-    public double BLOCKS_AVERAGE; //avg blocks per game
+    public String name;
+    public String ID;
+    public String season_wins; //ave
 }
